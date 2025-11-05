@@ -1,1 +1,36 @@
-<p>comp-ng-style works!</p>
+<div class="students-container">
+    <h2> [ngStyle] Example</h2>
+  <h2>Student Marks Report</h2>
+  <div class="legend">
+    <span class="pass-indicator">Pass (50+)</span>
+    <span class="fail-indicator">Fail (Below 50)</span>
+  </div>
+  
+  <ul class="students-list">
+    <li *ngFor="let student of students" 
+        class="student-item"
+        [ngStyle]="{
+          'background-color': student.marks >= 50 ? '#e8f5e8' : '#ffe8e8',
+          'border-left': student.marks >= 50 ? '5px solid #28a745' : '5px solid #dc3545',
+          'color': student.marks >= 50 ? '#155724' : '#721c24'
+        }">
+      <div class="student-info">
+        <span class="student-name">{{ student.name }}</span>
+        <span class="student-marks" 
+              [ngStyle]="{
+                'background-color': getBackgroundColor(student.marks) ? '#28a745' : '#dc3545',
+                'color': 'white'
+              }">
+          {{ student.marks }}
+        </span>
+      </div>
+      <div class="student-status" 
+           [ngStyle]="{
+             'color': getBackgroundColor(student.marks) ? '#28a745' : '#dc3545',
+             'font-weight': 'bold'
+           }">
+        {{ student.marks >= 50 ? 'PASS' : 'FAIL' }}
+      </div>
+    </li>
+  </ul>
+</div>

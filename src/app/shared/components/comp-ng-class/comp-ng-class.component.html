@@ -1,0 +1,22 @@
+﻿<div class="products-container">
+    <h2> [ngClass] Example</h2>
+  <h2>Product Availability</h2>
+  <div class="legend">
+    <span class="available-legend">Available</span>
+    <span class="unavailable-legend">Out of Stock</span>
+  </div>
+  
+  <ul class="products-list">
+    <li *ngFor="let product of products" 
+        class="product-item"
+        [ngClass]="{
+          'available': product.isAvailable,
+          'unavailable': !product.isAvailable
+        }">
+      <span class="product-name">{{ product.name }}</span>
+      <span class="product-status">
+        {{ product.isAvailable ? 'In Stock' : 'Out of Stock' }}
+      </span>
+    </li>
+  </ul>
+</div>

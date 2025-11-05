@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CompNgStyleComponent } from './shared/components/comp-ng-style/comp-ng-style.component';
+import { CompNgClassComponent } from './shared/components/comp-ng-class/comp-ng-class.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompNgStyleComponent
+    CompNgStyleComponent,
+    CompNgClassComponent
   ],
   imports: [
     BrowserModule,

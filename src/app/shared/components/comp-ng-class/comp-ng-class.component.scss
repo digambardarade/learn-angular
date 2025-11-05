@@ -1,4 +1,4 @@
-.students-container {
+.products-container {
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
@@ -17,60 +17,63 @@
     margin-bottom: 20px;
     font-size: 14px;
 
-    .pass-indicator {
+    .available-legend {
       padding: 5px 10px;
-      background-color: #28a745;
+      background-color: green;
       color: white;
       border-radius: 15px;
     }
 
-    .fail-indicator {
+    .unavailable-legend {
       padding: 5px 10px;
-      background-color: #dc3545;
-      color: white;
+      background-color: white;
+      color: red;
+      border: 1px solid red;
       border-radius: 15px;
     }
   }
 
-  .students-list {
+  .products-list {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    .student-item {
+    .product-item {
       margin-bottom: 8px;
-      padding: 10px;
+      padding: 12px;
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: transform 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       }
 
-      .student-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 5px;
-
-        .student-name {
-          font-size: 16px;
-          font-weight: 500;
-        }
-
-        .student-marks {
-          padding: 4px 8px;
-          border-radius: 15px;
-          font-weight: bold;
-          font-size: 12px;
-        }
+      // Available products: Green background with white text
+      &.available {
+        background-color: green;
+        color: white;
       }
 
-      .student-status {
+      // Unavailable products: White background with red text
+      &.unavailable {
+        background-color: white;
+        color: red;
+        border: 1px solid #ddd;
+      }
+
+      .product-name {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .product-status {
         font-size: 12px;
-        text-align: right;
+        font-weight: bold;
       }
     }
   }
