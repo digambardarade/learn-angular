@@ -25,4 +25,8 @@ export class CompNgClassComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getAvailableProducts() {
+    return this.products.filter(product => product.isAvailable);
+  }
+
 }

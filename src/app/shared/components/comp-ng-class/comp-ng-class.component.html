@@ -20,6 +20,8 @@
     </li>
   </ul>
 <hr>
+
+
   <h2> [ngClass] Example with d-none class</h2>
   <ul class="products-list">
     <li *ngFor="let product of products" 
@@ -34,5 +36,28 @@
       </span>
     </li>
   </ul>
+  <hr>
 
+  // -----------------------ngIf example-----------------------
+  // We cant use multiple structural directives on same element 
+  // like *ngFor and *ngIf together on same element.
+  
+  <h2> Method 1: Using Wrapper Div with ng-container</h2>
+  <div class="products-list">
+    <ng-container *ngFor="let product of products">
+      <div *ngIf="product.isAvailable" class="product-item available">
+        <span class="product-name">{{ product.name }}</span>
+        <span class="product-status">In Stock</span>
+      </div>
+    </ng-container>
+  </div>
+
+  <h2> Method 2: Using Filtered Array (Recommended)</h2>
+  <ul class="products-list">
+    <li *ngFor="let product of getAvailableProducts()" 
+        class="product-item available">
+      <span class="product-name">{{ product.name }}</span>
+      <span class="product-status">In Stock</span>
+    </li>
+  </ul>
 </div>

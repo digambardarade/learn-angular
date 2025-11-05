@@ -1,3 +1,8 @@
+// Utility class to hide elements
+.d-none {
+  display: none !important;
+}
+
 .products-container {
   max-width: 600px;
   margin: 20px auto;
