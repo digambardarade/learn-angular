@@ -1,0 +1,89 @@
+<div class="products-container">
+    <h2> [ngIf] Example</h2>
+  <h2>Product Availability</h2>
+  
+  <!-- ngIf example -->
+  <!-- We cant use multiple structural directives on same element -->
+  <!-- like *ngFor and *ngIf together on same element. -->
+
+  <!-- ng-container is a logical container element in Angular that doesn't render any HTML element in the DOM. It's used purely for structural directives and template logic.
+    Key Features:
+    - No DOM footprint - Doesn't create any HTML element
+    - Groups template content without adding extra wrapper elements
+    - Works with structural directives like *ngIf, *ngFor, *ngSwitch
+    - Solves multiple structural directive conflicts -->
+
+  <h2> *ngIf Method 1: Using Wrapper Div with ng-container</h2>
+  <div *ngIf="products.length > 0" class="products-list">
+    <ng-container *ngFor="let product of products">
+      <div *ngIf="product.isAvailable" class="product-item available">
+        <span class="product-name">{{ product.name }}</span>
+        <span class="product-status">In Stock</span>
+      </div>
+    </ng-container>
+  </div>
+
+  <h2> *ngIf Method 2: Using Filtered Array (Recommended)</h2>
+  <ul class="products-list">
+    <!-- getAvailableProducts() return only available products Array -->
+     <!-- then we can use it directly in *ngFor  to display available products -->
+    <li *ngFor="let product of getAvailableProducts()" 
+        class="product-item available">
+      <span class="product-name">{{ product.name }}</span>
+      <span class="product-status">In Stock</span>
+    </li>
+  </ul>
+
+  <hr>
+
+  <h2> *ngIf Method 3: Using *ngIf with else</h2>
+  
+  <!-- Example 1: Check if we have available products -->
+  <div *ngIf="getAvailableProducts().length > 0; else noAvailableProducts" class="available-section">
+    <h3>Available Products ({{ getAvailableProducts().length }} items)</h3>
+    <ul class="products-list">
+      <li *ngFor="let product of getAvailableProducts()" class="product-item available">
+        <span class="product-name">{{ product.name }}</span>
+        <span class="product-status">In Stock</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- else template for no available products -->
+  <ng-template #noAvailableProducts>
+    <div class="empty-state">
+      <h3>No Products Available</h3>
+      <p>Sorry, all products are currently out of stock. Please check back later!</p>
+    </div>
+  </ng-template>
+
+  <hr>
+
+  <!-- Example 2: Individual product availability with else -->
+  <h3>Individual Product Check with *ngIf else</h3>
+  <div class="individual-products">
+    <ng-container *ngFor="let product of products">
+      <div class="product-card">
+        <h4>{{ product.name }}</h4>
+        
+        <!-- Using *ngIf with else for each product -->
+        <div *ngIf="product.isAvailable; else outOfStock" class="in-stock">
+          <span class="status-badge available">✓ Available</span>
+          <p>Ready to ship!</p>
+        </div>
+        
+        <!-- else template for out of stock -->
+        <ng-template #outOfStock>
+          <div class="out-of-stock">
+            <span class="status-badge unavailable">✗ Out of Stock</span>
+            <p>Currently unavailable</p>
+          </div>
+        </ng-template>
+
+        
+      </div>
+    </ng-container>
+  </div>
+
+</div>
+
