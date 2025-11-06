@@ -1,33 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Import Bootstrap 4 */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 /* Optional: Add Font Awesome for icons */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
 
 /* Global custom styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Angular Material Snackbar Custom Styles */
-.success-snackbar {
+.snackbar-success {
   background-color: #4caf50 !important;
-  color: white !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.35) !important;
 }
 
-.error-snackbar {
+.snackbar-error {
   background-color: #f44336 !important;
-  color: white !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.35) !important;
 }
 
-.info-snackbar {
+.snackbar-info {
   background-color: #2196f3 !important;
-  color: white !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.35) !important;
 }
 
-.warning-snackbar {
+.snackbar-warning {
   background-color: #ff9800 !important;
-  color: white !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.35) !important;
+}
+
+.snackbar-global {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: 20px !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important;
+  min-width: 280px;
+  max-width: min(600px, calc(100vw - 40px));
+  pointer-events: auto;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cdk-overlay-pane {
+  pointer-events: none;
+  max-width: 100vw !important;
+}
+
+.cdk-overlay-container .cdk-overlay-pane.mat-snack-bar-container {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: 20px !important;
+  top: auto !important;
+  transform: translateX(-50%) !important;
 }

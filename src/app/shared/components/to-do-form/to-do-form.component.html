@@ -8,14 +8,35 @@
         class="form-control"
         id="todoTitle"
         placeholder="Enter todo title"
+        (keyup.enter)="isEditing ? onUpdateTodo() : onTodoAdd()"
       />
+      <!-- Show Add button when not editing -->
       <button
+        *ngIf="!isEditing"
         (click)="onTodoAdd()"
-        type="submit"
+        type="button"
         class="btn btn-sm btn-block btn-primary mt-4"
       >
         Add Todo
       </button>
+
+      <!-- Show Update and Cancel buttons when editing -->
+      <div *ngIf="isEditing" class="mt-4">
+        <button
+          (click)="onUpdateTodo()"
+          type="button"
+          class="btn btn-sm btn-success mr-2"
+        >
+          Update Todo
+        </button>
+        <button
+          (click)="cancelEdit()"
+          type="button"
+          class="btn btn-sm btn-secondary"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
   <div class="col-md-6">
@@ -23,13 +44,47 @@
       <div class="list-group">
         <ul class="list-group">
           <li
-            class="list-group-item d-flex justify-content-between"
+            class="list-group-item d-flex justify-content-between align-items-center"
+            [class.border-primary]="editingItem === item"
+            [class.bg-light]="editingItem === item"
             *ngFor="let item of todoItems"
           >
-            <strong>{{ item.title }}</strong>
+            <div class="d-flex align-items-center">
+              <label class="d-flex align-items-center mb-0 mr-3">
+                <input
+                  type="checkbox"
+                  class="mr-2"
+                  [checked]="item.completed"
+                  (change)="onToggleComplete(item)"
+                />
+                <strong
+                  [class.text-muted]="item.completed"
+                  [class.text-decoration-line-through]="item.completed"
+                >
+                  {{ item.title }}
+                  <small *ngIf="item.completed" class="ml-2 badge badge-success"
+                    >Completed</small
+                  >
+                </strong>
+              </label>
+            </div>
             <div>
-              <button class="btn btn-sm btn-outline-info mr-2">Edit</button>
-              <button class="btn btn-sm btn-outline-danger">Remove</button>
+              <button
+                type="button"
+                (click)="onEditTodo(item)"
+                class="btn btn-sm btn-outline-info mr-2"
+                [disabled]="editingItem === item"
+              >
+                <span *ngIf="editingItem !== item">Edit</span>
+                <span *ngIf="editingItem === item">Editing...</span>
+              </button>
+              <button
+                type="button"
+                (click)="onRemoveTodo(item)"
+                class="btn btn-sm btn-outline-danger"
+              >
+                Remove
+              </button>
             </div>
           </li>
         </ul>
