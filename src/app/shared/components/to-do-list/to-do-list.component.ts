@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Todo {
-  id: number;
-  title: string;
-  description: string;
-  status: 'pending' | 'in-progress' | 'completed';
-  createdDate: Date;
-}
+import { Todo } from '../../../models/todo.model';
 
 @Component({
   selector: 'app-to-do-list',

@@ -7,6 +7,7 @@ import { CompNgStyleComponent } from './shared/components/comp-ng-style/comp-ng-
 import { CompNgClassComponent } from './shared/components/comp-ng-class/comp-ng-class.component';
 import { CompNgIfComponent } from './shared/components/comp-ng-if/comp-ng-if.component';
 import { ToDoListComponent } from './shared/components/to-do-list/to-do-list.component';
+import { ToDoFormComponent } from './shared/components/to-do-form/to-do-form.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ToDoListComponent } from './shared/components/to-do-list/to-do-list.com
     CompNgStyleComponent,
     CompNgClassComponent,
     CompNgIfComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    ToDoFormComponent
   ],
   imports: [
     BrowserModule,
