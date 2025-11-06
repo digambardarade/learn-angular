@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <h2 class="text-center text-dark mb-4">Todo List</h2>
+      
+      <!-- Status Summary -->
+       <!-- Completed Card -->
+      <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border-success">
+            <div class="card-header bg-success text-white">
+              <h5 class="card-title mb-0">Completed</h5>
+            </div>
+            <div class="card-body">
+              <h2 class="card-text text-success font-weight-bold">{{ getStatusCount('completed') }}</h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- In Progress Card -->
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border-warning">
+            <div class="card-header bg-warning text-dark">
+              <h5 class="card-title mb-0">In Progress</h5>
+            </div>
+            <div class="card-body">
+              <h2 class="card-text text-warning font-weight-bold">{{ getStatusCount('in-progress') }}</h2>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pending Card -->
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border-danger">
+            <div class="card-header bg-danger text-white">
+              <h5 class="card-title mb-0">Pending</h5>
+            </div>
+            <div class="card-body">
+              <h2 class="card-text text-danger font-weight-bold">{{ getStatusCount('pending') }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Todo Items -->
+      <div class="row">
+        <div class="col-12">
+          <div 
+            *ngFor="let todo of todos" 
+            class="card mb-3 shadow-sm"
+            [ngClass]="'status-' + todo.status">
+            
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+              <h5 class="card-title mb-0 text-dark">{{ todo.title }}</h5>
+              <span 
+                class="badge badge-pill status-badge ml-2"
+                [style.background-color]="getStatusColor(todo.status)">
+                {{ todo.status | titlecase }}
+              </span>
+            </div>
+            
+            <div class="card-body">
+              <p class="card-text text-muted">{{ todo.description }}</p>
+              
+              <div class="d-flex justify-content-between align-items-center flex-wrap pt-2 border-top">
+                <small class="text-muted">
+                  Created: {{ todo.createdDate | date:'short' }}
+                </small>
+                <span class="badge badge-secondary">ID: {{ todo.id }}</span>  
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
