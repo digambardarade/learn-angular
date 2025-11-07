@@ -42,7 +42,18 @@
   <div class="col-md-6">
     <form>
       <div class="list-group">
-        <ul class="list-group">
+        <!-- Show empty state message when no todos exist -->
+        <div *ngIf="todoItems.length === 0" class="text-center p-4">
+          <div class="alert alert-info" role="alert">
+            <h5 class="alert-heading">📝 No Todos Yet!</h5>
+            <p class="mb-0">
+              Your todo list is empty. Add some todos using the form on the left to get started!
+            </p>
+          </div>
+        </div>
+
+        <!-- Show todo list when items exist -->
+        <ul class="list-group" *ngIf="todoItems.length > 0">
           <li
             class="list-group-item d-flex justify-content-between align-items-center"
             [class.border-primary]="editingItem === item"

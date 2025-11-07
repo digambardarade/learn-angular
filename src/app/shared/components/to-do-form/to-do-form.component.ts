@@ -117,6 +117,15 @@ export class ToDoFormComponent implements OnInit {
       if (this.editingItem === item) {
         this.cancelEdit();
       }
+
+      // Check if no items are left and show message
+      if (this.todoItems.length === 0) {
+        this.showNotification(
+          '📝 No todos left! Add some new todos to get started.',
+          'info',
+          3000
+        );
+      }
     }
   }
 
