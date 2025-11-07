@@ -143,4 +143,13 @@ export class ToDoFormComponent implements OnInit {
       this.showNotification(`↩️ "${item.title}" marked as pending!`, 'info');
     }
   }
+
+  // Getter methods for badge counts
+  get pendingCount(): number {
+    return this.todoItems.filter(item => !item.completed).length;
+  }
+
+  get completedCount(): number {
+    return this.todoItems.filter(item => item.completed).length;
+  }
 }
